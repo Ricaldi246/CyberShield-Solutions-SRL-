@@ -3,72 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberShield Solutions SRL - Portal Corporativo</title>
+    <title>Sistema de Gestión de Correspondencia - Ingeniería de Sistemas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>CyberShield Solutions SRL</h1>
-            <p>Plataforma Institucional de Organización y Métodos</p>
+            <div class="logo-area">
+                <h2>CARRERA DE INGENIERÍA DE SISTEMAS</h2>
+                <p>U.M.S.A. &bull; Plataforma Digital de Control y Seguimiento de Trámites</p>
+            </div>
         </div>
     </header>
 
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#empresa">La Empresa</a></li>
-                <li><a href="#estructura">Estructura Orgánica</a></li>
-                <li><a href="#manual">Manual de Funciones</a></li>
+                <li><a href="#tracking" class="active">Tracking Público</a></li>
+                <li><a href="#kardex">Ventanilla Única</a></li>
+                <li><a href="#jefatura">Jefatura y Oficinas</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container">
-        <section id="empresa">
-            <h2>Sobre CyberShield Solutions</h2>
-            <p>Somos una empresa consultora especializada en ciberseguridad, dedicada al diseño de arquitecturas de defensa perimetral, auditorías de TI y respuesta ante incidentes para infraestructuras críticas institucionales.</p>
-        </section>
+        <section id="tracking" class="card">
+            <div class="card-header">
+                <h3>🔍 Consulta Pública de Hojas de Ruta (HU-07)</h3>
+            </div>
+            <div class="card-body">
+                <p>Consulte el estado actual y el historial de derivaciones de su trámite académico sin necesidad de iniciar sesión.</p>
+                <div class="search-box">
+                    <input type="text" id="codigo_buscar" placeholder="Ej: SIS-2026-0412" value="SIS-2026-0001">
+                    <button onclick="simularTracking()">Buscar Trámitar</button>
+                </div>
 
-        <section id="estructura">
-            <h2>Estructura Jerárquica del Área de Seguridad</h2>
-            <p>Nuestra organización cuenta con un esquema vertical especializado para garantizar operaciones de alta disponibilidad:</p>
-            <div class="organigrama">
-                <div class="puesto ciso">1. CISO (Chief Information Security Officer)</div>
-                <div class="linea"></div>
-                <div class="puesto csirt">2. Equipo CSIRT (Respuesta a Incidentes)</div>
-                <div class="linea"></div>
-                <div class="puesto soc">3. Analistas del SOC (Centro de Operaciones de Seguridad)</div>
+                <div id="resultado_timeline" class="timeline">
+                    <h4>Línea de Tiempo del Trámite: <span class="badge">En Revisión</span></h4>
+                    <div class="timeline-item">
+                        <div class="time">14:30</div>
+                        <div class="content">
+                            <h5>Enviado a: Jefatura de Carrera (JEF-SIS)</h5>
+                            <p><strong>Proveído:</strong> Para visto bueno de la Comisión Académica.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item current">
+                        <div class="time">09:15</div>
+                        <div class="content">
+                            <h5>Origen: Kardex y Ventanilla Única (KAR-SIS)</h5>
+                            <p><strong>Proveído:</strong> Documentación y folios validados correctamente en formato PDF.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="manual">
-            <h2>Extracto del Manual de Funciones y Métodos</h2>
-            
-            <h3>A. Director de Seguridad de la Información (CISO)</h3>
-            <ul>
-                <li><strong>Objetivo del puesto:</strong> Definir la estrategia de seguridad alineada con los objetivos del negocio y la gobernanza de TI.</li>
-                <li><strong>Funciones principales:</strong> Supervisar la gestión de riesgos, emitir políticas de cumplimiento y liderar las auditorías de control perimetral.</li>
-            </ul>
-
-            <h3>B. Líder del Equipo CSIRT</h3>
-            <ul>
-                <li><strong>Objetivo del puesto:</strong> Contener, mitigar y erradicar amenazas activas o brechas de datos en tiempo real.</li>
-                <li><strong>Funciones principales:</strong> Coordinar los análisis forenses digitales y ejecutar planes de contingencia ante ataques DoS/Ransomware.</li>
-            </ul>
-
-            <h3>C. Analista del SOC (Nivel 1 / Nivel 2)</h3>
-            <ul>
-                <li><strong>Objetivo del puesto:</strong> Monitorear de forma continua las alertas de los sistemas de detección de intrusos.</li>
-                <li><strong>Funciones principales:</strong> Revisión de logs en herramientas SIEM, triaje de eventos sospechosos y escalado de incidentes críticos.</li>
-            </ul>
+        <section id="kardex" class="card">
+            <div class="card-header">
+                <h3>📝 Registro de Correspondencia Recibida (HU-04)</h3>
+            </div>
+            <div class="card-body">
+                <form onsubmit="return false;">
+                    <div class="form-group">
+                        <label>Tipo de Trámite Académico:</label>
+                        <select>
+                            <option>Modalidad de Titulación / Perfil de Tesis</option>
+                            <option>Inscripción a Cursos de Temporada</option>
+                            <option>Traspaso de Universidad / Convalidaciones</option>
+                            <option>Solicitud de Certificado de Calificaciones</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción / Asunto General:</label>
+                        <textarea placeholder="Detalle los motivos y la cantidad de folios adjuntos..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Documento de Respaldo Digitalizado (Solo PDF - RNF-04):</label>
+                        <input type="file" accept="application/pdf">
+                    </div>
+                    <button type="button" class="btn-success">Inicializar Hoja de Ruta</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 CyberShield Solutions SRL. Proyecto Académico de Ingeniería de Sistemas.</p>
-        </div>
+        <p>&copy; 2026 Sistema Web de Gestión de Trámites. Proyecto Final - 5to Semestre.</p>
     </footer>
+
+    <script>
+        function simularTracking() {
+            var timeline = document.getElementById('resultado_timeline');
+            timeline.style.display = 'block';
+            alert('Consultando el código en la base de datos de la carrera...');
+        }
+    </script>
 </body>
 </html>
